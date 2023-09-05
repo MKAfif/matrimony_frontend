@@ -21,6 +21,8 @@ import MemberDetailsPage from './pages/MemberDetailsPage';
 import ChatPage from './pages/ChatPage';
 import BillingPage from './pages/BillingPage';
 import MembershipPage from './pages/MembershipPage';
+import ConversationPage from './pages/ConversationPage';
+import PremiumMembershipPage from './pages/PremiumMembershipPage';
 function App() {
   return (
     <div className="App">
@@ -43,8 +45,10 @@ function App() {
             <Route path="/UserProfile" element={<UserProfilePage />} />
             <Route path="/memberdetails/:memberId" element={<MemberDetailsPage />} />
             <Route path="/chat" element={<ChatPage />} />
-            <Route path="/billing" element={<BillingPage />} />
+            <Route path="/billing/:premium_id" element={<BillingPage />} />
             <Route path="/membership" element={<MembershipPage />} />
+            <Route path="/conversation" element={<ConversationPage />} />
+            <Route path="/premiummembers" element={<PremiumMembershipPage />} />
             <Route path="*" element={<NotFoundPage/>} />
           
            

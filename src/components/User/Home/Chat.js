@@ -4,6 +4,7 @@ import Footer from './Footer';
 import { AiOutlineMessage } from 'react-icons/ai';
 import { BsFillSendFill } from 'react-icons/bs';
 import { FaWhatsapp } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Chat = () => {
     return (
@@ -15,19 +16,21 @@ const Chat = () => {
                     <div className='left bg-green-700 h-full w-72 p-4 rounded-l-lg'>
                         <h2 className='text-2xl font-semibold text-white mb-6'>Chat Options</h2>
                         
-                        <div className='flex items-center mb-4'>
+                        <div className='flex items-center mb-4 cursor-pointer'>
                             <AiOutlineMessage className='text-white text-xl mr-2' />
                             <h1 className='text-xl font-semibold text-white'>INBOX</h1>
                         </div>
 
-                        <div className='flex items-center mb-4'>
+                        <div className='flex items-center mb-4 cursor-pointer'>
                             <BsFillSendFill className='text-white text-xl mr-2' />
                             <h1 className='text-xl font-semibold text-white'>SENT</h1>
                         </div>
 
-                        <div className='flex items-center mb-4'>
+                        <div className='flex items-center mb-4 cursor-pointer'>
                             <FaWhatsapp className='text-white text-xl mr-2' />
-                            <h1 className='text-xl font-semibold text-white'>MY CHATS</h1>
+                            <Link to='/conversation'>
+                                <h1 className='text-xl font-semibold text-white'>MY CHATS</h1>
+                            </Link>  
                         </div>
 
                     </div>

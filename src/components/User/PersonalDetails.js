@@ -52,7 +52,7 @@ const PersonalDetails = () => {
 
 
   return (
-    <div className='bg-ashcolor w-screen h-screen'>
+    <div className='bg-ashcolor w-screen h-screen '>
         <div className='flex items-center'>
             <img className='w-15 h-10 px-2 pt-2' src="/assets/logo.png"  alt='logo' />
             <p className='text-logo text-left font-bold '>Matrimony</p>

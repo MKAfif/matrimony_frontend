@@ -7,6 +7,9 @@ import { useDispatch } from 'react-redux';
 import { updateImageUrl } from '../../../Redux/Actions/ImageInfoAction';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import {FiEdit} from 'react-icons/fi'
+import {AiOutlineAppstoreAdd} from 'react-icons/ai'
+import {BsFillChatRightDotsFill} from 'react-icons/bs'
 
 const Profile = () => {
 
@@ -18,6 +21,8 @@ const Profile = () => {
     console.log(userinfo,".....uuuuuuuuuuuu")
     console.log(memberinfo,"................mmmmmm")
     const memberid = memberinfo.memberinfo.member_id
+    
+    
 
     const [selectedImage, setSelectedImage] = useState(null);
 
@@ -25,7 +30,8 @@ const Profile = () => {
     console.log(membersData,".......................")
 
     useEffect(() => {
-        axios.get(`${APIURL}/api/allmemberdetails`)
+        
+        axios.get(`${APIURL}/api/allmemberdetails/?member_id=${memberid}`)
             .then(response => {
                 console.log(response.data,"data from frontend"); 
                 setMembersData(response.data);
@@ -33,7 +39,7 @@ const Profile = () => {
             .catch(error => {
                 console.error('Error fetching member details', error);
             });
-    }, []);
+    }, [memberid]);
 
 
 
@@ -144,38 +150,48 @@ const Profile = () => {
 
 
         </div>
-        <div className='border border-black w-72 h-64 ml-6 rounded-3xl'>
-
-
+        <div className='border border-black w-72 h-40 ml-6 rounded-3xl'>
             <ul className='ml-2'>
-            <Link to="/UserProfile">
-                <li className="font-bold w-24 mt-5 hover:text-green-700 cursor-pointer">
-                    Edit Profile
-                </li>
-            </Link>
+                <Link to="/UserProfile">
+                    <li className="font-bold w-32 mt-5 hover:text-green-700 cursor-pointer flex">
+                        <div>
+                            <FiEdit className=' text-red-500 mt-1' />
+                        </div>
+                        <div className='ml-3'>
+                            Edit Profile
+                        </div>
+                        
+                    </li>
+                </Link>
 
-            <Link to = "/Preference">
-            <li className='font-bold w-32 mt-4 hover:text-green-700 cursor-pointer'>
-                Add Preferences
-            </li>
-            </Link>
-            <li className='font-bold w-36 mt-4 hover:text-green-700 cursor-pointer'>
-                Verify Your Profile
-            </li>
-            <Link to = "/chat">
-                <li className='font-bold w-36 mt-4 hover:text-green-700 cursor-pointer'>
-                    Your Conversation
-                </li>
-            </Link>
-            <li className='font-bold w-20 mt-4 hover:text-green-700 cursor-pointer'>
-                Your Calls
-            </li>
-            
+                <Link to="/Preference">
+                    <li className='font-bold w-40 mt-4 hover:text-green-700 cursor-pointer flex'>
+                        <div>
+                            <AiOutlineAppstoreAdd className='text-blue-500 mt-1' />
+                        </div>
+                        <div className='ml-3 '>
+
+                        Add Preferences
+
+                        </div>
+                        
+                    </li>
+                </Link>
+
+                <Link to="/chat">
+                    <li className='font-bold w-44 mt-4 hover:text-green-700 cursor-pointer flex'>
+                        <div>
+                            <BsFillChatRightDotsFill className='text-green-700 mt-1' />
+                        </div>
+                        <div className='ml-3 '>
+                            Your Conversation
+                        </div>
+                        
+                    </li>
+                </Link>
             </ul>
-
-        
-        
         </div>
+
 
         
         </div>
@@ -204,7 +220,7 @@ const Profile = () => {
                    ))}
                </div>
                 ) : (
-                    <div>Loading...</div>
+                    <div>No Matching Profiles</div>
                 )}
             </div>
 

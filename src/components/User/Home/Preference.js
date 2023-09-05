@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import {useNavigate} from 'react-router-dom'
 
 const Preference = () => {
+
     const [ageRange, setAgeRange] = useState({ min: '', max: '' });
     const [location, setLocation] = useState('');
     const [education, setEducation] = useState('');
@@ -103,141 +104,172 @@ const Preference = () => {
 
        
     };
+    
+
 
     return (
-        <div style={{ backgroundImage: "url('https://images.unsplash.com/photo-1566305977571-5666677c6e98?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1890&q=80')", backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh' }}>
-            <Header />
-            <div className="flex flex-col justify-center items-center min-h-screen mt-3">
-                <div className="bg-white p-6 rounded-md shadow-md w-full sm:w-96">
-                    <h2 className="text-2xl font-semibold mb-4">Add Preference</h2>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-4">
-                            <label className="block font-semibold mb-2">Age Range:</label>
-                            <div className="flex space-x-2">
-                                <input
-                                    type="number"
-                                    name="min"
-                                    placeholder="Min"
-                                    value={ageRange.min}
-                                    onChange={handleAgeRangeChange}
-                                    className="w-1/2 p-2 border rounded-md"
-                                />
-                                <input
-                                    type="number"
-                                    name="max"
-                                    placeholder="Max"
-                                    value={ageRange.max}
-                                    onChange={handleAgeRangeChange}
-                                    className="w-1/2 p-2 border rounded-md"
-                                />
-                            </div>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block font-semibold mb-2">Location:</label>
-                            <input
-                                type="text"
-                                value={location}
-                                onChange={handleLocationChange}
-                                className="w-full p-2 border rounded-md"
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label className="block font-semibold mb-2">Education:</label>
-                            <input
-                                type="text"
-                                value={education}
-                                onChange={handleEducationChange}
-                                className="w-full p-2 border rounded-md"
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label className="block font-semibold mb-2">Occupation:</label>
-                            <input
-                                type="text"
-                                value={occupation}
-                                onChange={handleOccupationChange}
-                                className="w-full p-2 border rounded-md"
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label className="block font-semibold mb-2">Height:</label>
-                            <select
-                                value={height}
-                                onChange={handleHeightChange}
-                                className="w-full p-2 border rounded-md"
-                            >
-                               
-                                <option value="">Select Height</option>
-                                <option value="No Preference">No Preference</option>
-                                <option value="short">Short</option>
-                                <option value="average">Average</option>
-                                <option value="tall">Tall</option>
-                            </select>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block font-semibold mb-2">Eye Color:</label>
-                            <select
-                                value={eyeColor}
-                                onChange={handleEyeColorChange}
-                                className="w-full p-2 border rounded-md"
-                            >
-                                <option value="">Select Eye Color</option>
-                                <option value="No Preference">No Preference</option>
-                                <option value="blue">Blue</option>
-                                <option value="green">Green</option>
-                                <option value="brown">Brown</option>
-                            </select>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block font-semibold mb-2">Skin Tone:</label>
-                            <select
-                                value={skinTone}
-                                onChange={handleSkinToneChange}
-                                className="w-full p-2 border rounded-md"
-                            >
-                                <option value="">Select Skin Tone</option>
-                                <option value="No Preference">No Preference</option>
-                                <option value="fair">Fair</option>
-                                <option value="medium">Medium</option>
-                                <option value="dark">Dark</option>
-                            </select>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block font-semibold mb-2">Body Type:</label>
-                            <select
-                                value={bodyType}
-                                onChange={handleBodyTypeChange}
-                                className="w-full p-2 border rounded-md"
-                            >
-                                <option value="">Select Body Type</option>
-                                <option value="No Preference">No Preference</option>
-                                <option value="slim">Slim</option>
-                                <option value="athletic">Athletic</option>
-                                <option value="curvy">Curvy</option>
-                            </select>
-                        </div>
-                        <div className="mb-4">
-                            <label className="block font-semibold mb-2">Hobbies:</label>
-                            <input
-                                type="text"
-                                value={hobbies}
-                                onChange={handleHobbiesChange}
-                                className="w-full p-2 border rounded-md"
-                            />
-                        </div>
-                        <button
-                            type="submit"
-                            onClick={handleSubmit}
-                            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
-                        >
-                            Add Preference
-                        </button>
-                    </form>
+      <div>
+        <Header />
+        <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+          <h2 className="text-lg font-bold text-logo">Add Preference</h2>
+  
+          <form>
+            <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+              <div>
+                <label className="text-gray-700 dark:text-gray-200" htmlFor="ageRange">Age Range</label>
+                <div className="flex space-x-2">
+                <div>
+                    <input
+                    placeholder='min'
+                    value={ageRange.min}
+                    onChange={(e) => setAgeRange({ ...ageRange, min: e.target.value })}
+                    id="minAge"
+                    type="number" 
+                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                    />
                 </div>
-            </div>
-            <Footer />
-        </div>
-    );
-};
 
-export default Preference;
+                <div>
+                    <input
+                    placeholder='max'
+                    value={ageRange.max}
+                    onChange={(e) => setAgeRange({ ...ageRange, max: e.target.value })}
+                    id="maxAge"
+                    type="number" 
+                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                    />
+                </div>
+
+
+                 
+                </div>
+              </div>
+  
+              <div>
+                <label className="text-gray-700 dark:text-gray-200" htmlFor="location">Location</label>
+                <input
+                  placeholder='Location'
+                  id="location"
+                  value={location}
+                  onChange={handleLocationChange}
+                  type="text"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                />
+              </div>
+  
+              <div>
+                <label className="text-gray-700 dark:text-gray-200" htmlFor="height">Height</label>
+                <select
+                  value={height}
+                  onChange={handleHeightChange}
+                  id="height"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                >
+                  <option value="">Select Option</option>
+                  <option value="No Prefernce">No preference</option>
+                  <option value="short">Short</option>
+                  <option value="average">Average</option>
+                  <option value="tall">Tall</option>
+               
+                </select>
+              </div>
+  
+              <div>
+                <label className="text-gray-700 dark:text-gray-200" htmlFor="eyeColor">Eye Colour</label>
+                <select
+                  value={eyeColor}
+                  onChange={handleEyeColorChange}
+                  id="eyeColor"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                >
+                  <option value="">Select Option</option>
+                  <option value="No preference">No preference</option>
+                  <option value="Blue">Blue</option>
+                  <option value="Brown">Brown</option>
+                  <option value="Green">Green</option>
+              
+                </select>
+              </div>
+  
+              <div>
+                <label className="text-gray-700 dark:text-gray-200" htmlFor="skinTone">Skin Tone</label>
+                <select
+                  value={skinTone}
+                  onChange={handleSkinToneChange}
+                  id="skinTone"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                >
+                  <option value="">Select Option</option>
+                  <option value="No preference">No preference</option>
+                  <option value="Fair">Fair</option>
+                  <option value="Fedium">Medium</option>
+                  <option value="Dark">Dark</option>
+              
+                </select>
+              </div>
+  
+              <div>
+                <label className="text-gray-700 dark:text-gray-200" htmlFor="bodyType">Body Type</label>
+                <select
+                  value={bodyType}
+                  onChange={handleBodyTypeChange}
+                  id="bodyType"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                >
+                  <option value="">Select Option</option>
+                  <option value="No preference">No preference</option>
+                  <option value="Slim">Slim</option>
+                  <option value="Average">Average</option>
+                  <option value="Athletic">Athletic</option>
+                </select>
+              </div>
+  
+              <div>
+                <label className="text-gray-700 dark:text-gray-200" htmlFor="education">Education</label>
+                <input
+                 onChange={handleEducationChange}
+                  placeholder='Education'
+                  id="education"
+                  type="text"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                />
+              </div>
+
+              <div>
+                <label className="text-gray-700 dark:text-gray-200" htmlFor="education">Occupation</label>
+                <input
+                 placeholder='Occupation'
+                  id="occupation"
+                  onChange={handleOccupationChange}
+                  type="text"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                />
+              </div>
+  
+              <div>
+                <label className="text-gray-700 dark:text-gray-200" htmlFor="hobbies">Hobbies</label>
+                <input
+                 placeholder='Hobbies'
+                  value={hobbies}
+                  onChange={handleHobbiesChange}
+                  id="hobbies"
+                  type="text"
+                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                />
+              </div>
+            </div>
+  
+            <div className="flex justify-end mt-6">
+              <button
+               onClick={handleSubmit}
+               className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-green-600 rounded-md hover:bg-green-800 focus:outline-none focus:bg-gray-600">Save</button>
+            </div>
+          </form>
+        </section>
+        <Footer />
+      </div>
+    );
+  };
+  
+  export default Preference;
+  
