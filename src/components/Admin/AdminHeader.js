@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useLocation} from 'react-router-dom';
 
 function AdminHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation()
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -27,14 +28,63 @@ function AdminHeader() {
         </div>
       </div>
       <div className={`px-2 pt-2 pb-4 sm:flex sm:p-0 ${isOpen ? 'block' : 'hidden'}`}>
-        <Link to='/Admin' className="block px-2 py-1 font-semibold rounded text-green-500">Dashboard</Link>
-        <Link to='/Adminprofile' className="block px-2 py-1 font-semibold rounded hover:text-green-500">Profile Verification</Link>
-        <Link to='/Adminmember' className="mt-1 block px-2 py-1 font-semibold rounded hover:text-green-500 sm:mt-0 sm:ml-2">Members</Link>
-        <Link to='/premiummembers' className="mt-1 block px-2 py-1 font-semibold rounded hover:text-green-500 sm:mt-0 sm:ml-2">Premium Members</Link>
+        <Link
+          to="/Admin"
+          className={
+            location.pathname === "/Admin"
+              ? "block px-2 py-1 font-semibold rounded text-green-500"
+              : "block px-2 py-1 font-semibold rounded hover:text-green-500"
+          }
+        >
+          Dashboard
+        </Link>
+
+
+        <Link 
+        to='/Adminprofile' 
+        className={location.pathname==="/Adminprofile"
+        ?"block px-2 py-1 font-semibold rounded text-green-500"
+        : "block px-2 py-1 font-semibold rounded hover:text-green-500"
+        }
+        >
+        Profile Verification
+        </Link>
+
+
+        <Link 
+        to='/Adminmember' 
+        className= {location.pathname === "/Adminmember"
+        ? "mt-1 block px-2 py-1 font-semibold rounded text-green-500 sm:mt-0 sm:ml-2"
+        : "mt-1 block px-2 py-1 font-semibold rounded hover:text-green-500 sm:mt-0 sm:ml-2"
+        }
+        >Members
+        </Link>
+
+
+        <Link 
+        to='/premiummembers' 
+        className= {location.pathname==='/premiummembers'
+        ?"mt-1 block px-2 py-1 font-semibold rounded text-green-500 sm:mt-0 sm:ml-2"
+        :"mt-1 block px-2 py-1 font-semibold rounded hover:text-green-500 sm:mt-0 sm:ml-2"
+       }
+        >Premium Members
+        </Link>
+
         <Link to='' className="mt-1 block px-2 py-1 font-semibold rounded hover:text-green-500 sm:mt-0 sm:ml-2">Rejected</Link>
-        <Link to='/membership' className="mt-1 block px-2 py-1 font-semibold rounded hover:text-green-500 sm:mt-0 sm:ml-2">Premium Plans</Link>
+
+        <Link
+          to="/membership"
+          className={
+            location.pathname === "/membership"
+              ? "mt-1 block px-2 py-1 font-semibold rounded text-green-500 sm:mt-0 sm:ml-2"
+              : "mt-1 block px-2 py-1 font-semibold rounded hover:text-green-500 sm:mt-0 sm:ml-2"
+          }
+        >
+          Premium Plans
+        </Link>
+
         <div className="mt-1 block px-2 py-1 font-semibold rounded hover:text-red-800 sm:mt-0 sm:ml-2 text-red-500">
-          <Link to='/logout' className="ml-2">Logout</Link>
+          <Link to='/Adminlogin' className="ml-2">Logout</Link>
         </div>
       </div>
     </header>

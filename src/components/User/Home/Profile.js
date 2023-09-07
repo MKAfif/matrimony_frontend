@@ -104,129 +104,158 @@ const Profile = () => {
         
 
   
-  return (
-    <>
-      <Header />
-      <div className='flex'>
-        <div className='left'>
-        <div  className='w-72 border border-black ml-6 h-96 mt-10 rounded-2xl bg-gradient-to-br from-pg1 to-pg2'>
-        
-        <div className='bg-white border border-black rounded-3xl w-48 h-56 mt-5 ml-10'>
-        <div className='rounded-full ml-7 mt-2 w-32 h-32 bg-gray-400 relative'>
-            <input
-                type='file'
-                accept='image/*'
-                className='w-full h-full opacity-0 cursor-pointer absolute top-0 left-0'
-                onChange={handleImageUpload}
-            />
-            {/* < img src={memberinfo.memberinfo.image_url} alt='' /> */}
-
-            {memberinfo.memberinfo.image_url ? (
-                <img
-                    src={memberinfo.memberinfo.image_url}
-                    alt='Profile'
-                    className='object-cover w-full h-full rounded-full'
-                />
-            ) : (
-                <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    className='h-16 w-16 text-gray-600 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
-                    viewBox='0 0 20 20'
-                    fill='currentColor'
-                >
-                    <path
-                        fillRule='evenodd'
-                        d='M10 18a8 8 0 100-16 8 8 0 000 16zm0 1a9 9 0 110-18 9 9 0 010 18zm0-6a1 1 0 011 1v2a1 1 0 01-2 0v-2a1 1 0 011-1zm0-7a2 2 0 100 4 2 2 0 000-4z'
-                        clipRule='evenodd'
+    return (
+        <>
+          <Header />
+          <div className='flex'>
+            <div className='left'>
+              <div className='w-72 border border-black ml-6 h-96 mt-10 rounded-2xl bg-gradient-to-br from-pg1 to-pg2'>
+                <div className='bg-white border border-black rounded-3xl w-48 h-56 mt-5 ml-10'>
+                  <div className='rounded-full ml-7 mt-2 w-32 h-32 bg-gray-400 relative'>
+                    <input
+                      type='file'
+                      accept='image/*'
+                      className='w-full h-full opacity-0 cursor-pointer absolute top-0 left-0'
+                      onChange={handleImageUpload}
                     />
-                </svg>
-            )}
-        </div>
-
-
-
-            <h1 className='font-bold mt-2'>{memberinfo.memberinfo?memberinfo.memberinfo.name:''}</h1>
-        </div>
-
-
-        </div>
-        <div className='border border-black w-72 h-40 ml-6 rounded-3xl'>
-            <ul className='ml-2'>
-                <Link to="/UserProfile">
-                    <li className="font-bold w-32 mt-5 hover:text-green-700 cursor-pointer flex">
-                        <div>
-                            <FiEdit className=' text-red-500 mt-1' />
-                        </div>
-                        <div className='ml-3'>
-                            Edit Profile
-                        </div>
-                        
+    
+                    {memberinfo.memberinfo.image_url ? (
+                      <img
+                        src={memberinfo.memberinfo.image_url}
+                        alt='Profile'
+                        className='object-cover w-full h-full rounded-full'
+                      />
+                    ) : (
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        className='h-16 w-16 text-gray-600 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+                        viewBox='0 0 20 20'
+                        fill='currentColor'
+                      >
+                        <path
+                          fillRule='evenodd'
+                          d='M10 18a8 8 0 100-16 8 8 0 000 16zm0 1a9 9 0 110-18 9 9 0 010 18zm0-6a1 1 0 011 1v2a1 1 0 01-2 0v-2a1 1 0 011-1zm0-7a2 2 0 100 4 2 2 0 000-4z'
+                          clipRule='evenodd'
+                        />
+                      </svg>
+                    )}
+                  </div>
+                  <h1 className='font-bold mt-2'>
+                    {memberinfo.memberinfo ? memberinfo.memberinfo.name : ''}
+                  </h1>
+                </div>
+              </div>
+              <div className='border border-black w-72 h-40 ml-6 rounded-3xl'>
+                <ul className='ml-2'>
+                  <Link to='/UserProfile'>
+                    <li className='font-bold w-32 mt-5 cursor-pointer flex'>
+                      <div>
+                        <FiEdit className='text-red-500 mt-1' />
+                      </div>
+                      <div className='ml-3 hover:scale-125 duration-300 hover:text-green-600'>
+                        Edit Profile
+                      </div>
                     </li>
-                </Link>
-
-                <Link to="/Preference">
-                    <li className='font-bold w-40 mt-4 hover:text-green-700 cursor-pointer flex'>
-                        <div>
-                            <AiOutlineAppstoreAdd className='text-blue-500 mt-1' />
-                        </div>
-                        <div className='ml-3 '>
-
+                  </Link>
+    
+                  <Link to='/Preference'>
+                    <li className='font-bold w-40 mt-4 cursor-pointer flex'>
+                      <div>
+                        <AiOutlineAppstoreAdd className='text-blue-500 mt-1' />
+                      </div>
+                      <div className='ml-3 hover:scale-125 duration-300 hover:text-green-600'>
                         Add Preferences
-
-                        </div>
-                        
+                      </div>
                     </li>
-                </Link>
-
-                <Link to="/chat">
-                    <li className='font-bold w-44 mt-4 hover:text-green-700 cursor-pointer flex'>
-                        <div>
-                            <BsFillChatRightDotsFill className='text-green-700 mt-1' />
-                        </div>
-                        <div className='ml-3 '>
-                            Your Conversation
-                        </div>
-                        
+                  </Link>
+    
+                  <Link to={`/conversation/${memberid}`}>
+                    <li className='font-bold w-44 mt-4 cursor-pointer flex'>
+                      <div>
+                        <BsFillChatRightDotsFill className='text- mt-1' />
+                      </div>
+                      <div className='ml-3 hover:scale-125 duration-300 hover:text-green-600'>
+                        Your Conversation
+                      </div>
                     </li>
-                </Link>
-            </ul>
-        </div>
-
-
-        
-        </div>
-
-        <div className='right mt-6 sm:ml-80'>
-            <h1 className='font-semibold text-2xl ml-6 sm:mt-6 text-logo '>Your Daily Recommendations</h1>
-            <div>
-                {membersData.members?.length > 0 ? (
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:ml-6'>
-                   {membersData.members?.map(member => (
-                       <div key={member.id} className='border border-gray-400 rounded-3xl p-2 transform hover:scale-105 transition-transform duration-300 shadow-2xl'>
-                           <div className='flex flex-col items-center'>
-                               {/* Clickable container with image */}
-                               <div
-                                    className='cursor-pointer transform hover:scale-105 transition-transform duration-300'
-                                    onClick={() => handleImageClick(member.id)}
-                                >
-                                    <img
-                                        className='w-24 h-24 rounded-3xl mb-2 shadow-md hover:shadow-lg'
-                                        src={member.image_urls[0]} // Display the first image for simplicity
-                                        alt='none'
-                                    />
-                                </div>
-                           </div>
-                       </div>
-                   ))}
-               </div>
-                ) : (
-                    <div>No Matching Profiles</div>
-                )}
+                  </Link>
+                </ul>
+              </div>
             </div>
+            <div className=' right  lg:ml-96 md:ml-20  mt-4'>
+              <h1 className='font-semibold text-2xl ml-6 sm:mt-6 text-logo'>
+                Your Daily Recommendations
+              </h1>
+              <div>
+                {membersData.members?.length > 0 ? (
+                  <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:ml-6 '>
+                    {membersData.members?.map((member) => (
+                      <div
+                        key={member.id}
+                        className='border border-gray-400 rounded-3xl p-2 transform hover:scale-105 transition-transform duration-300 shadow-2xl'
+                      >
+                        <div className='flex flex-col items-center'>
+                          <div
+                            className='cursor-pointer transform hover:scale-105 transition-transform duration-300'
+                            onClick={() => handleImageClick(member.id)}
+                          >
+                            <img
+                              className='w-24 h-24 rounded-3xl mb-2 shadow-md hover:shadow-lg'
+                              src={member.image_urls[0]}
+                              alt='none'
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div>No Matching Profiles</div>
+                )}
+              </div>
+              <div>
+              <h1 className='font-semibold text-2xl ml-6 sm:mt-6 text-logo'>
+                Matching Profiles
+              </h1>
+                {membersData.members?.length > 0 ? (
+                  <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:ml-6 '>
+                    {membersData.members?.map((member) => (
+                      <div
+                        key={member.id}
+                        className='border border-gray-400 rounded-3xl p-2 transform hover:scale-105 transition-transform duration-300 shadow-2xl'
+                      >
+                        <div className='flex flex-col items-center'>
+                          <div
+                            className='cursor-pointer transform hover:scale-105 transition-transform duration-300'
+                            onClick={() => handleImageClick(member.id)}
+                          >
+                            <img
+                              className='w-24 h-24 rounded-3xl mb-2 shadow-md hover:shadow-lg'
+                              src={member.image_urls[0]}
+                              alt='none'
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div>No Matching Profiles</div>
+                )}
+              </div>
+            </div>
+            
+          </div>
+          
+          <Footer />
+        </>
+      );
+    };
+    
+    export default Profile;
 
 
-
-            <h1 className='font-semibold text-2xl ml-6 sm:mt-12 text-logo'>New Matches</h1>
+            {/* <h1 className='font-semibold text-2xl ml-6 sm:mt-12 text-logo'>New Matches</h1>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:ml-6 cursor-pointer'>
                 <div className='border border-gray-400 rounded-3xl w-32 h-32 mx-auto sm:mx-0'>
                 <img src='' alt='' />
@@ -240,15 +269,4 @@ const Profile = () => {
                 <div className='border border-gray-400 rounded-3xl w-32 h-32 mx-auto sm:mx-0'>
                 <img src='' alt='' />
                 </div>
-            </div>
-        </div>
-
-      </div>
-      <Footer/>
-      
-
-    </>
-  );
-};
-
-export default Profile;
+            </div> */}

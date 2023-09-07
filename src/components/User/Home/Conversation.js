@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const Conversation = () => {
   const [message, setMessage] = useState('');
@@ -9,10 +11,41 @@ const Conversation = () => {
   const [socket, setSocket] = useState(null);
   const APIURL = useSelector((state) => state.APIURL.url);
 
+  const { memberId } = useParams();
+  const [chattingProfiles, setChattingProfiles] = useState([]);
+  
+  const [chatMessages , setChatMessages] = useState([])
+
+  const recepient_id = selectedUser
+  console.log(chatMessages,"data from data base")
+
+  useEffect(()=>{
+    axios.get(`${APIURL}/api/getmessage/${recepient_id}/`)
+      .then(response=>{
+        setChatMessages(response.data)
+      })
+      .catch(error=>{
+        console.error("errorrr")
+      })
+  },[recepient_id])
+  
+  useEffect(()=>{
+    axios.get(`${APIURL}/api/chattingprofiles/?member_id=${memberId}`)
+            .then(response => {
+              setChattingProfiles(response.data);
+             
+            })
+            .catch(error => {
+                console.error('Error fetching member details:', error);
+            });
+    }, [memberId]);
+  
+ 
+
   useEffect(() => {
 
     console.log('Before creating WebSocket');
-    const newSocket = new WebSocket('ws://127.0.0.1:8000/ws/chat/matrimony_chat/');
+    const newSocket = new WebSocket('ws://127.0.0.1:8000/ws/ABC/');
     console.log('WebSocket created');
 
     newSocket.onopen = () => {
@@ -25,6 +58,7 @@ const Conversation = () => {
 
     newSocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
+     
 
       if (data.type === 'users') {
         setUsers(data.users);
@@ -40,23 +74,23 @@ const Conversation = () => {
     newSocket.onclose = () => {
       console.log('WebSocket connection closed');
     };
-
+    
     setSocket(newSocket);
 
-    return () => {
-      newSocket.close();
-    };
   }, []);
 
   const sendMessage = () => {
-    if (selectedUser && message.trim() !== '') {
+    if (selectedUser && socket && message.trim() !== '') {
       const data = {
-        type: 'message',
-        recipient: selectedUser,
-        content: message,
+        sender_id : memberId,
+        recipient : selectedUser,
+        message   : message,
       };
+      console.log('Sending data:', data);
       socket.send(JSON.stringify(data));
       setMessage('');
+    }else{
+      console.log("Socket connection is not opened!!!")
     }
   };
 
@@ -66,7 +100,7 @@ const Conversation = () => {
       <div className="w-1/4 bg-gray-100 p-4 overflow-y-auto">
         <h2 className="text-xl font-semibold mb-4">Users</h2>
         <ul>
-          {users.map((user) => (
+          {chattingProfiles.members?.map((user) => (
             <li
               key={user.id}
               className={`cursor-pointer py-2 px-4 ${
@@ -74,58 +108,64 @@ const Conversation = () => {
               }`}
               onClick={() => setSelectedUser(user.id)}
             >
-              {user.name}
-            </li>
+              <div className="flex items-center"> 
+          <div className="w-10 h-10 rounded-full overflow-hidden mr-2"> 
+            <img
+              src={user.image_urls[0]} 
+              alt={`${user.name}'s Photo`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          {user.name}
+        </div>
+      </li>
           ))}
         </ul>
       </div>
 
-      {/* Chat messages */}
+    
       <div className="flex-1 p-2 sm:p-6 justify-between flex flex-col h-screen">
-        {/* Header code remains the same */}
-        {/* ... */}
-
-        {/* Chat messages and input */}
+        
+      <div
+      id="messages"
+      className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch flex-1"
+    >
+      {messages.map((msg, index) => (
         <div
-          id="messages"
-          className="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch flex-1"
+          key={index}
+          className={`chat-message ${
+            msg.sender === 'You' ? 'justify-end' : 'justify-start'
+          }`}
         >
-          {messages.map((msg, index) => (
+          <div className="flex items-end">
             <div
-              key={index}
-              className={`chat-message ${
-                msg.sender === 'You' ? 'justify-end' : ''
+              className={`flex flex-col space-y-2 text-xs max-w-xs mx-2 ${
+                msg.sender === 'You' ? 'order-1' : 'order-2'
               }`}
             >
-              <div className="flex items-end">
-                <div
-                  className={`flex flex-col space-y-2 text-xs max-w-xs mx-2 order-${
-                    msg.sender === 'You' ? '1' : '2'
-                  } items-${msg.sender === 'You' ? 'end' : 'start'}`}
+              <div>
+                <span
+                  className={`px-4 py-2 rounded-lg inline-block ${
+                    msg.sender === 'You'
+                      ? 'rounded-br-none bg-blue-600 text-white'
+                      : 'bg-gray-300 text-gray-600'
+                  }`}
                 >
-                  <div>
-                    <span
-                      className={`px-4 py-2 rounded-lg inline-block ${
-                        msg.sender === 'You'
-                          ? 'rounded-br-none bg-blue-600 text-white'
-                          : 'bg-gray-300 text-gray-600'
-                      }`}
-                    >
-                      {msg.content}
-                    </span>
-                  </div>
-                </div>
-                <img
-                  src={msg.senderImage}
-                  alt={msg.sender}
-                  className="w-6 h-6 rounded-full order-2"
-                />
+                  {msg.content}
+                </span>
               </div>
             </div>
-          ))}
+            <img
+              src={msg.senderImage}
+              alt={msg.sender}
+              className="w-6 h-6 rounded-full order-2"
+            />
+          </div>
         </div>
+      ))}
+    </div>
 
-        {/* Input for sending messages */}
+      
         <div className="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
           <div className="relative flex">
             <input

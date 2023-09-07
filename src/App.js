@@ -47,7 +47,7 @@ function App() {
             <Route path="/chat" element={<ChatPage />} />
             <Route path="/billing/:premium_id" element={<BillingPage />} />
             <Route path="/membership" element={<MembershipPage />} />
-            <Route path="/conversation" element={<ConversationPage />} />
+            <Route path="/conversation/:memberId" element={<ConversationPage />} />
             <Route path="/premiummembers" element={<PremiumMembershipPage />} />
             <Route path="*" element={<NotFoundPage/>} />
           

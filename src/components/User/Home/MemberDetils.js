@@ -5,6 +5,7 @@ import { FiHeart } from 'react-icons/fi';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const MemberDetails = () => {
@@ -40,6 +41,7 @@ const MemberDetails = () => {
             };
     
             const response = await axios.post(`${APIURL}/api/showinterest`, data);
+            toast.success('Intrest sent successfully')
             console.log(response, ".....member id");
         } catch (error) {
             console.error(error, "error while getting data");
@@ -88,8 +90,8 @@ const MemberDetails = () => {
                                 
                                 onClick={()=>handleInterest(memberDetails.member_id)}
                                 
-                                className="px-6 py-2 text-white bg-red-500 hover:bg-red-600 rounded-lg transition-colors duration-300 transform hover:scale-105">
-                                    <FiHeart className="inline-block mr-2" />
+                                className="px-6 py-2 text-white bg-red-500 hover:bg-red-600 rounded-lg transition-colors duration-300 transform hover:scale-105 ">
+                                    <FiHeart className="inline-block mr-2 animate-bounce" />
                                     Show Interest
                                 </button>
                             </div>
