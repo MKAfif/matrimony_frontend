@@ -47,6 +47,7 @@ const Member = () => {
               >
                 <div className="bg-gradient-to-tr from-blue-200 to-indigo-600 border border-gray-300 p-4 shadow-md rounded-2xl">
                   <p className="text-white font-semibold">ID: {member.id}</p>
+                  <p className="text-white font-semibold">Name: {member.name}</p>
                   <p className="text-white font-semibold">
                     Email: {member.email}
                   </p>

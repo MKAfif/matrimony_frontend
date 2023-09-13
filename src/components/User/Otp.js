@@ -32,7 +32,8 @@ const Otp = () => {
 
 
     }catch(error){
-      console.error("Otp registration failed")
+      // console.error("Otp registration failed")
+      toast.error('Invalid OTP. Please enter a valid one.');
     }
   }
   
@@ -56,13 +57,17 @@ const Otp = () => {
         </div>
         <div className='mt-3'>
           <div className='rounded-md bg-white w-52 h-16 flex items-center mx-auto'>
-            <input
-              autoFocus
-              className='ml-2 w-28 outline-none border border-white'
-              placeholder='Enter the Otp'
-              value={otp}
-              onChange={(e)=>setOtp(e.target.value)}
-            />
+          <input
+            autoFocus
+            className='ml-2 w-28 outline-none border border-white'
+            maxLength={6} 
+            placeholder='Enter the OTP'
+            value={otp}
+            onChange={(e) => {
+              const numericInput = e.target.value.replace(/\D/g, '');
+              setOtp(numericInput);
+            }}
+          />
             <button onClick={handleOtp} className='text-logo text-xl font-bold ml-2 bg-slate-300 rounded-md w-16'>Verify</button>
           </div>
         </div>

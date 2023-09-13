@@ -21,17 +21,12 @@ const UserProfile = () => {
     };
 
     
-
-    
-
-    
-
     
     return (
-        <div className="">
+        <div className="bg-gradient-to-t from-pg1">
            <Header/>
             
-           <div className="right mt-6 ">
+           <div className="right mt-6  ">
              
                 <div className="flex justify-center items-center mb-6">
                     <img

@@ -23,6 +23,8 @@ import BillingPage from './pages/BillingPage';
 import MembershipPage from './pages/MembershipPage';
 import ConversationPage from './pages/ConversationPage';
 import PremiumMembershipPage from './pages/PremiumMembershipPage';
+import VideoCallPage from './pages/VideoCallPage';
+import VideoCallInterfacePage from './pages/VideoCallInterfacePage';
 function App() {
   return (
     <div className="App">
@@ -49,6 +51,8 @@ function App() {
             <Route path="/membership" element={<MembershipPage />} />
             <Route path="/conversation/:memberId" element={<ConversationPage />} />
             <Route path="/premiummembers" element={<PremiumMembershipPage />} />
+            <Route path="/videocall" element={<VideoCallPage />} />
+            <Route path="/videocallinterface/:roomId" element={<VideoCallInterfacePage />} />
             <Route path="*" element={<NotFoundPage/>} />
           
            

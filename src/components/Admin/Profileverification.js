@@ -50,9 +50,10 @@ const Profileverification = () => {
           </div>
         ) : (
           memberDetails.map((member) => (
-            <div key={member.id} className='pt-5'>
+            <div key={member.id} className='mt-5  ml-5'>
               <div className='bg-white border border-gray-300 p-4  shadow-md rounded-md bg-gradient-to-b from-lime-200 '>
                 <p className='text-gray-800 font-semibold'>ID: {member.id}</p>
+                <p className='text-gray-800 font-semibold'>Name: {member.name}</p>
                 <p className='text-gray-800 font-semibold'>Email: {member.email}</p>
                 <p className='text-gray-800 font-semibold'>Dob: {member.date_of_birth}</p>
                 <div className='flex mt-2'>

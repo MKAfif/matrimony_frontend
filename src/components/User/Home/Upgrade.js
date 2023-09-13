@@ -36,7 +36,7 @@ const Upgrade = () => {
   return (
     <div>
       <Header />
-      <div className="flex justify-center items-center h-96 cursor-pointer mt-24  ">
+      <div className="flex justify-center items-center h-96 cursor-pointer mt-24 bg-gradient-to-t from-emerald-200 ">
        
         {premiumPackege.map((packages, index) => (
           

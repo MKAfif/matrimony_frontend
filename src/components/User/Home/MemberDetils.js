@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import {FaVideo} from 'react-icons/fa'
 
 
 const MemberDetails = () => {
@@ -52,15 +53,16 @@ const MemberDetails = () => {
 
     
     return (
-        <div style={{ backgroundImage: "url('https://images.unsplash.com/photo-1554189097-ffe88e998a2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80')", backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh' }}>
+        <div >
             <Header />
-
+            <div className='bg-gradient-to-t from-emerald-200'>
             <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-md hover:shadow-lg dark:bg-neutral-700 md:max-w-xl mx-4 md:mx-auto mt-8 transition duration-300 ease-in-out transform hover:-translate-y-1">
                 <img
                     className="w-full h-96 md:w-1/3 md:h-auto md:!rounded-l-lg object-cover rounded-t-lg"
                     src={memberDetails?.image_url || "https://tecdn.b-cdn.net/wp-content/uploads/2020/06/vertical.jpg"}
                     alt=""
                 />
+                
                 <div className="flex flex-col justify-start p-6 md:w-2/3">
                 {memberDetails ? (
                     <div>
@@ -95,6 +97,7 @@ const MemberDetails = () => {
                                     Show Interest
                                 </button>
                             </div>
+                            
                         </div>
                     ) : (
                         <div>Loading...</div>
@@ -122,6 +125,7 @@ const MemberDetails = () => {
 
 
             <Footer />
+        </div>
         </div>
     );
 };

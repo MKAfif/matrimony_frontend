@@ -48,10 +48,11 @@ const PremiumMember = () => {
             >
               <div className="bg-gradient-to-tr from-yellow-300 border border-gray-300 p-4 shadow-md rounded-2xl">
                 <p className="text-black font-semibold">ID: {member.id}</p>
+                <p className="text-black font-semibold">Name: {member.name}</p>
                 <p className="text-black font-bold">Email: {member.email}</p>
-                <p className="text-black font-semibold">
+                {/* <p className="text-black font-semibold">
                   Dob: {member.date_of_birth}
-                </p>
+                </p> */}
 
                 <div className="flex mt-4">
                   <h1 className="text-green-700 font-bold">Verified</h1>

@@ -22,11 +22,11 @@ const Navbar = () => {
       };
 
       return (
-        <header className=" border-b border-black sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
+        <header className=" shadow-md sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
             
           <div className="flex items-center justify-between px-4 py-3 sm:p-0">
             <div>
-              <img className="h-8 " src="/assets/logo.png" alt="matrimony" />
+              <img className="h-8  " src="/assets/logo.png" alt="matrimony" />
               <h1 className='text-logo font-mono'>matrimony</h1>
             </div>
             

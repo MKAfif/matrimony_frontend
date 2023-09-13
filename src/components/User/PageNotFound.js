@@ -1,14 +1,16 @@
-import React from 'react'
+import React from 'react';
 
 const PageNotFoundPage = () => {
   return (
-    <div>
-      <h3>
-        <img className='mt-20 ml-96' src='https://imgs.search.brave.com/kydC8IyGOxVqdOax9XZC4ixHVKOaSUbAxb5S6_vjHZI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS50ZW5vci5jb20v/dllUd1VFYWZob2dB/QUFBQy80MDQuZ2lm.gif' alt=''/>
-        <h1 className='font-bold text-3xl'>404 Page Not Found</h1>
-      </h3>
+    <div className='flex flex-col items-center justify-center h-screen'>
+      <img
+        className='w-full h-full mb-4 '
+        src='https://imgs.search.brave.com/Y9EsEFDaFWfhya-YdR4aR5zfGWxvWidyMo2yWL6NGNc/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9mcmVl/ZnJvbnRlbmQuY29t/L2Fzc2V0cy9pbWcv/aHRtbC1mdW5ueS00/MDQtcGFnZXMvSFRN/TC1ZZXRpLTQwNC1Q/YWdlLmdpZg.gif'
+        alt=''
+      />
+      
     </div>
-  )
-}
+  );
+};
 
-export default PageNotFoundPage
+export default PageNotFoundPage;

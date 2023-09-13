@@ -21,6 +21,15 @@ const Register = () => {
   const handleRegsiter = async (e) => {
     e.preventDefault();
 
+    if (!profileFor || !name || !number) {
+      toast.error('All fields are required.'); 
+      return; 
+    }
+    if (number.length !== 10) {
+      toast.error('Mobile number should be 10 digits.');
+      return;
+    }
+   
     try {
       const selectedProfile = profileFor.toLowerCase();
       const isMaleProfile = selectedProfile.includes('my-self(male)') || 
@@ -91,7 +100,7 @@ const Register = () => {
 
 
   return (
-    <div className='bg-custom h-screen'>
+    <div className='bg-custom md:h-screen h-screen'>
       
       <div className='flex items-center px-4 py-2'>
         <img className='w-15 h-10' src="/assets/logo.png" alt='logo' />
@@ -104,57 +113,64 @@ const Register = () => {
       <div className='px-4 py-2'>
         <p className='mt-8 text-center font-bold'>Your search for the perfect match ends here!<br />#BeChoosy with Biggest Matrimony Service for Malayalis</p>
       </div>
-      <div className='px-4 py-2 bg-white rounded-3xl mt-5 w-5/6 sm:w-2/3 mx-auto flex'>
-        <div className='flex-1 p-4'>
-          <p className='font-bold  w-44'>Matrimony profile for</p>
+        <div className='px-4 md:py-2 py-6 bg-white rounded-3xl mt-5 w-5/6 sm:w-2/3 mx-auto md:flex'>
+          <div className='flex-1 md:p-4'>
+            <p className='font-bold  w-44'>Matrimony profile for</p>
 
-          <select className='bg-white px-4 py-2 rounded-3xl w-full cursor-pointer focus:outline-none' 
+            <select className='bg-white px-4 py-2 rounded-3xl w-full cursor-pointer focus:outline-none' 
 
-          value={profileFor}
-          onChange={(e) =>setProfilefor(e.target.value)}
-          
-          >
+            value={profileFor}
+            onChange={(e) =>setProfilefor(e.target.value)}
+            
+            >
 
-            <option className='hidden'>Select Profile</option>
-            <option className='cursor-pointer hover:bg-gray-100'>My-self(male)</option>
-            <option className='cursor-pointer hover:bg-gray-100'>My-self(female)</option>
-            <option className='cursor-pointer hover:bg-gray-100'>Daughter</option>
-            <option className='cursor-pointer hover:bg-gray-100'>Son</option>
-            <option className='cursor-pointer hover:bg-gray-100'>Sister</option>
-            <option className='cursor-pointer hover:bg-gray-100'>Brother</option>
-          </select>
+              <option className='hidden'>Select Profile</option>
+              <option className='cursor-pointer hover:bg-gray-100'>My-self(male)</option>
+              <option className='cursor-pointer hover:bg-gray-100'>My-self(female)</option>
+              <option className='cursor-pointer hover:bg-gray-100'>Daughter</option>
+              <option className='cursor-pointer hover:bg-gray-100'>Son</option>
+              <option className='cursor-pointer hover:bg-gray-100'>Sister</option>
+              <option className='cursor-pointer hover:bg-gray-100'>Brother</option>
+            </select>
+          </div>
+          <div className='flex-1 p-4'>
+            <p className='font-bold  w-12'>Name</p>
+            <input
+              maxLength={30}
+              autoFocus
+              type='text'
+              className='outline-none w-full'
+              placeholder='Enter your name'
+              value={name}
+              onChange={(e) => {
+                const inputValue = e.target.value;
+                const onlyLetters = inputValue.replace(/[^A-Za-z]/g, '');
+                setName(onlyLetters);
+              }}
+            />
+          </div>
+          <div className='flex-1 p-4'>
+            <p className='font-bold w-32'>Mobile Number</p>
+            <input maxLength={10} className='outline-none w-full' placeholder='Enter your phone number'
+
+            value={number}
+            onChange={(e)=>setNumber(e.target.value)}
+            
+            ></input>
+            
+          </div>
+        
+          <div className='flex items-center justify-center p-4'>
+            <button className='text-white px-6 py-2 font-bold bg-logo rounded-full' onClick={handleRegsiter}>Register</button>
+          </div>
         </div>
-        <div className='flex-1 p-4'>
-          <p className='font-bold  w-12'>Name</p>
-          <input autoFocus type='text' className='outline-none w-full' placeholder='Enter your name'
 
-          value={name}
-          onChange={(e)=>setName(e.target.value)}
-          
-          ></input>
-        </div>
-        <div className='flex-1 p-4'>
-          <p className='font-bold w-32'>Mobile Number</p>
-          <input className='outline-none w-full' placeholder='Enter your phone number'
-
-          value={number}
-          onChange={(e)=>setNumber(e.target.value)}
-          
-          ></input>
-          
-        </div>
-       
-        <div className='flex items-center justify-center p-4'>
-          <button className='text-white px-6 py-2 font-bold bg-logo rounded-full' onClick={handleRegsiter}>Register</button>
-        </div>
-      </div>
-
-      <div className='bg-white h-40 mt-52 relative'>
+      {/* <div className='bg-white h-40 mt-52 relative'>
         <img className='h-40 w-full object-cover' src='https://stylesatlife.com/wp-content/uploads/2019/03/Black-mehndi-for-full-hands.jpg' alt='' />
         <h2 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white ml-16 font-bold text-3xl'>
           Feel Free To Say No Dowry
         </h2>
-      </div>
+      </div> */}
       {showPopup && (
           <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
             <div className='bg-white rounded-lg p-8'>

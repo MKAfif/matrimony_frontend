@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import {FiEdit} from 'react-icons/fi'
 import {AiOutlineAppstoreAdd} from 'react-icons/ai'
 import {BsFillChatRightDotsFill} from 'react-icons/bs'
+import {FaVideo} from 'react-icons/fa'
 
 const Profile = () => {
 
@@ -107,10 +108,10 @@ const Profile = () => {
     return (
         <>
           <Header />
-          <div className='flex'>
+          <div className='flex bg-gradient-to-t from-'>
             <div className='left'>
-              <div className='w-72 border border-black ml-6 h-96 mt-10 rounded-2xl bg-gradient-to-br from-pg1 to-pg2'>
-                <div className='bg-white border border-black rounded-3xl w-48 h-56 mt-5 ml-10'>
+              <div className='w-72 border shadow-2xl  ml-6 h-96 mt-2 rounded-2xl bg-gradient-to-br from-pg1 to-pg2'>
+                <div className='bg-white border  rounded-3xl w-48 h-56 mt-5 ml-10'>
                   <div className='rounded-full ml-7 mt-2 w-32 h-32 bg-gray-400 relative'>
                     <input
                       type='file'
@@ -143,9 +144,10 @@ const Profile = () => {
                   <h1 className='font-bold mt-2'>
                     {memberinfo.memberinfo ? memberinfo.memberinfo.name : ''}
                   </h1>
+                  <h1 className='font-bold text-green-700'>Id : {memberinfo.memberinfo ? memberinfo.memberinfo.matrimony_id : ''} </h1>
                 </div>
               </div>
-              <div className='border border-black w-72 h-40 ml-6 rounded-3xl'>
+              <div className='border shadow-2xl w-72 h-fit ml-6 mb-2 mt-2 rounded-3xl'>
                 <ul className='ml-2'>
                   <Link to='/UserProfile'>
                     <li className='font-bold w-32 mt-5 cursor-pointer flex'>
@@ -153,7 +155,7 @@ const Profile = () => {
                         <FiEdit className='text-red-500 mt-1' />
                       </div>
                       <div className='ml-3 hover:scale-125 duration-300 hover:text-green-600'>
-                        Edit Profile
+                        Profile
                       </div>
                     </li>
                   </Link>
@@ -179,22 +181,32 @@ const Profile = () => {
                       </div>
                     </li>
                   </Link>
+                  <Link to='/videocall'>
+                    <li className='font-bold w-44 mt-4 cursor-pointer flex'>
+                      <div>
+                        <FaVideo className='text- mt-1' />
+                      </div>
+                      <div className='ml-3 hover:scale-125 duration-300 hover:text-green-600'>
+                        Video Call
+                      </div>
+                    </li>
+                  </Link>
                 </ul>
               </div>
             </div>
             <div className=' right  lg:ml-96 md:ml-20  mt-4'>
-              <h1 className='font-semibold text-2xl ml-6 sm:mt-6 text-logo'>
+              <h1 className='font-semibold font-serif text-2xl ml-6 sm:mt-6 text-logo  '>
                 Your Daily Recommendations
               </h1>
               <div>
                 {membersData.members?.length > 0 ? (
-                  <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:ml-6 '>
+                  <div className=' rounded-3xl shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:ml-6 '>
                     {membersData.members?.map((member) => (
                       <div
                         key={member.id}
-                        className='border border-gray-400 rounded-3xl p-2 transform hover:scale-105 transition-transform duration-300 shadow-2xl'
+                        className=' rounded-3xl p-2 transform hover:scale-105 transition-transform duration-300 shadow-2xl'
                       >
-                        <div className='flex flex-col items-center'>
+                        <div className='flex flex-col items-center '>
                           <div
                             className='cursor-pointer transform hover:scale-105 transition-transform duration-300'
                             onClick={() => handleImageClick(member.id)}
@@ -214,15 +226,15 @@ const Profile = () => {
                 )}
               </div>
               <div>
-              <h1 className='font-semibold text-2xl ml-6 sm:mt-6 text-logo'>
+              <h1 className='font-semibold text-2xl ml-6 sm:mt-8 text-logo font-serif'>
                 Matching Profiles
               </h1>
                 {membersData.members?.length > 0 ? (
-                  <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:ml-6 '>
+                  <div className='shadow-2xl rounded-3xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:ml-6 '>
                     {membersData.members?.map((member) => (
                       <div
                         key={member.id}
-                        className='border border-gray-400 rounded-3xl p-2 transform hover:scale-105 transition-transform duration-300 shadow-2xl'
+                        className=' rounded-3xl p-2 transform hover:scale-105 transition-transform duration-300 shadow-2xl'
                       >
                         <div className='flex flex-col items-center'>
                           <div
@@ -255,18 +267,4 @@ const Profile = () => {
     export default Profile;
 
 
-            {/* <h1 className='font-semibold text-2xl ml-6 sm:mt-12 text-logo'>New Matches</h1>
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4 sm:ml-6 cursor-pointer'>
-                <div className='border border-gray-400 rounded-3xl w-32 h-32 mx-auto sm:mx-0'>
-                <img src='' alt='' />
-                </div>
-                <div className='border border-gray-400 rounded-3xl w-32 h-32 mx-auto sm:mx-0'>
-                <img src='' alt='' />
-                </div>
-                <div className='border border-gray-400 rounded-3xl w-32 h-32 mx-auto sm:mx-0'>
-                <img src='' alt='' />
-                </div>
-                <div className='border border-gray-400 rounded-3xl w-32 h-32 mx-auto sm:mx-0'>
-                <img src='' alt='' />
-                </div>
-            </div> */}
+           
