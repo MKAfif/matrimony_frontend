@@ -11,7 +11,7 @@ const Conversation = () => {
   const [socket, setSocket] = useState(null);
   const APIURL = useSelector((state) => state.APIURL.url);
  
-  console.log(messages,"....................................message")
+ 
 
  
 
@@ -91,7 +91,7 @@ const Conversation = () => {
           recepient     : selectedUser,
           content       : data.content,
         };
-        // console.log(newMessage,"newwwwwwwwwwwwwwwwwwww")
+      
          if (!messages.some((msg) => msg.content === newMessage.content)) {
       setMessages((prevMessages) => [...prevMessages, newMessage]);
     }

@@ -10,20 +10,25 @@ const BaseRegister = () => {
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
 
+
+ 
+
   const navigate = useNavigate();
   const APIURL = useSelector((state) => state.APIURL.url);
+
+
   const handleBaseRegister = async (e) => {
     e.preventDefault();
 
-    if (!dateOfBirth || !religion || !motherTongue || !emailId || !password) {
+    if (!dateOfBirth || !religion || !motherTongue || !emailId ) {
       toast.error("All fields are required.");
       return;
     }
 
     const today = new Date();
-    const birthDate = new Date(dateOfBirth);
-    const age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
+    let birthDate = new Date(dateOfBirth);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let monthDiff = today.getMonth() - birthDate.getMonth();
 
     if (
       monthDiff < 0 ||

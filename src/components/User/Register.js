@@ -44,7 +44,7 @@ const Register = () => {
         gender: selectedGender,
         matrimony_id : matrimonyId
       };
-      console.log(data,".................")
+      
 
       const response = await axios.post(`${APIURL}/api/register`, data);
 
@@ -165,12 +165,7 @@ const Register = () => {
           </div>
         </div>
 
-      {/* <div className='bg-white h-40 mt-52 relative'>
-        <img className='h-40 w-full object-cover' src='https://stylesatlife.com/wp-content/uploads/2019/03/Black-mehndi-for-full-hands.jpg' alt='' />
-        <h2 className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white ml-16 font-bold text-3xl'>
-          Feel Free To Say No Dowry
-        </h2>
-      </div> */}
+      
       {showPopup && (
           <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
             <div className='bg-white rounded-lg p-8'>

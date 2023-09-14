@@ -56,7 +56,7 @@ function App() {
             <Route path="*" element={<NotFoundPage/>} />
           
            
-            {/* <Route path='*' element = {<PageNotFoundPage/>}/> */}
+           
           </Routes>
         </BrowserRouter>
 
