@@ -18,7 +18,7 @@ const Preference = () => {
   const [bodyType, setBodyType] = useState("");
   const [hobbies, setHobbies] = useState("");
 
-  console.log(education, occupation, height);
+ 
 
   const userinfo = useSelector((state) => state.userinfo);
   const memberinfo = useSelector((state) => state.memberinfo);
@@ -80,7 +80,7 @@ const Preference = () => {
 
         if (response.data.length > 0) {
           const preferenceData = response.data[0];
-          console.log("Preference Data:", preferenceData);
+        
           setAgeRange({
             min: preferenceData.age_range_min,
             max: preferenceData.age_range_max,

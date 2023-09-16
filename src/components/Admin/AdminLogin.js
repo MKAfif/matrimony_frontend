@@ -37,7 +37,7 @@ const AdminLogin = () => {
           
 
         }catch(error){
-            console.error("login failed")
+            toast.error("login failed")
         }
 
        

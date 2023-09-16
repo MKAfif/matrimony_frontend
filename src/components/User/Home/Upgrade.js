@@ -13,7 +13,7 @@ const Upgrade = () => {
 
   const [premiumPackege , setPremiumPackage] = useState([])
 
-  console.log(premiumPackege)
+ 
 
   useEffect(() => {
 

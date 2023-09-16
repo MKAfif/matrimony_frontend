@@ -22,7 +22,7 @@ const Conversation = () => {
  
 
   const [chatMessages , setChatMessages] = useState([])
-  console.log(chatMessages)
+ 
 
   const recepient_id = selectedUser
   
@@ -67,9 +67,9 @@ const Conversation = () => {
 
   useEffect(() => {
 
-    // console.log('Before creating WebSocket');
+   
     const newSocket = new WebSocket('ws://127.0.0.1:8000/ws/ABC/');
-    // console.log('WebSocket created');
+
 
     newSocket.onopen = () => {
       console.log('WebSocket connection established');
@@ -116,7 +116,7 @@ const Conversation = () => {
         recipient : recepient_id,
         message   : message,
       };
-      // console.log('Sending data:', data);
+      
       socket.send(JSON.stringify(data));
       setMessage('');
     }else{

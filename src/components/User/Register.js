@@ -51,7 +51,7 @@ const Register = () => {
       localStorage.setItem('member_id',response.data.member_id)
 
 
-      console.log('Registration successful', response.data);
+   
       navigate('/r2')
       toast.success('20% completed');
 
@@ -60,7 +60,7 @@ const Register = () => {
       if (error.response && error.response.data && error.response.data.mobile_number){
         toast.error('This mobile number is already registered. Please choose a different one.');
       }
-      console.error('Registration failed', error);
+      toast.error('Registration failed', error);
     }
   };
 
@@ -93,7 +93,7 @@ const Register = () => {
 
 
     }catch(error){
-      console.error("Login failed")
+     
       toast.error("Login Failed")
     }
   }

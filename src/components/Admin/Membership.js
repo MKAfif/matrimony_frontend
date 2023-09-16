@@ -23,7 +23,7 @@ const Membership = () => {
         setMemberShipPackage(response.data);
       })
       .catch((error) => {
-        console.error('error in fetching data', error);
+        toast.error('error in fetching data', error);
       });
   }, []);
 
@@ -41,7 +41,7 @@ const Membership = () => {
         time_period: timeperiod,
       };
 
-      console.log(data, 'from frontend');
+     
       const response = await axios.post(`${APIURL}/api/adminpremium`, data);
       setShowForm(false);
       navigate('/membership');
@@ -52,7 +52,7 @@ const Membership = () => {
       setPlanPrice('');
       setTimePeriod('');
     } catch (error) {
-      console.error(error, 'error');
+      toast.error(error, 'error');
     }
   };
 

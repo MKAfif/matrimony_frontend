@@ -12,14 +12,14 @@ const Profileverification = () => {
   useEffect(() => {
     axios.get(`${APIURL}/api/profile-verification`) 
       .then(response => {
-        console.log(response); 
+     
         return response.data;
       })
       .then(data => {
-        console.log(data); 
+    
         setMemberDetails(data);
       })
-      .catch(error => console.error('Error fetching member details', error));
+      .catch(error => toast.error('Error fetching member details', error));
   }, []);
 
   const handleVerify = async (member_id) => {
@@ -27,7 +27,7 @@ const Profileverification = () => {
       const response = await axios.post(`${APIURL}/api/verify-member/${member_id}`);
       toast.success("Verified Successfully");
     } catch (error) {
-      console.error('An error occurred', error);
+      toast.error('An error occurred', error);
     }
   }
 

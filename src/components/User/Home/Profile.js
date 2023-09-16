@@ -18,25 +18,24 @@ const Profile = () => {
   const APIURL = useSelector((state) => state.APIURL.url);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(userinfo, ".....uuuuuuuuuuuu");
-  console.log(memberinfo, "................mmmmmm");
+ 
   const memberid = memberinfo.memberinfo.member_id;
 
   const isPlatinum = memberinfo.memberinfo.is_platinum;
   const isGold = memberinfo.memberinfo.is_gold;
   const isDiamond = memberinfo.memberinfo.is_diamond;
-  console.log(isDiamond ,"membership")
+ 
 
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [membersData, setMembersData] = useState([]);
-  console.log(membersData, ".......................");
+  
 
   useEffect(() => {
     axios
       .get(`${APIURL}/api/allmemberdetails/?member_id=${memberid}`)
       .then((response) => {
-        console.log(response.data, "data from frontend");
+       
         setMembersData(response.data);
       })
       .catch((error) => {
@@ -67,12 +66,12 @@ const Profile = () => {
       });
 
       setSelectedImage(response.data.image);
-      console.log(response.data.image, "...imageee*****************");
+      
 
       dispatch(updateImageUrl(response.data.image));
     } catch (error) {
       console.error("An error occurred during image upload:", error);
-      console.log(error.response);
+      
     }
   };
 

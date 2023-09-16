@@ -24,7 +24,7 @@ const Billing = () => {
                 setBilling(response.data);
             })
             .catch(error => {
-                console.error('Error fetching data', error);
+                toast.error('Error fetching data', error);
             });
     }, [premium_id]);
 
@@ -69,11 +69,11 @@ const Billing = () => {
               .then((response) => {
                 navigate('/home');
                 toast.success("Thank you for subscribing, now you can freely enjoy the premium benefits");
-                console.log('Success:', response);
+             
               })
               .catch((error) => {
                 toast.error("An error occurred during payment. Please try again.");
-                console.error('Error:', error);
+              
               });
           },
         };
@@ -83,7 +83,7 @@ const Billing = () => {
       }
     })
     .catch((error) => {
-      console.error('Error checking membership:', error);
+      toast.error('Error checking membership:', error);
     });
 };
 

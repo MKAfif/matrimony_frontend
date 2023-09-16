@@ -34,17 +34,17 @@ const PersonalDetails = () => {
         family_values: familyValues,
       };
 
-      console.log(data, "3rd......................");
+    
       const response = await axios.post(
         `${APIURL}/api/personal-register`,
         data
       );
 
-      console.log("3rd registration successfull", response.data);
+     
       navigate("/r4");
       toast.success("60% completed");
     } catch (error) {
-      console.error("registration failed");
+      toast.error("registration failed");
     }
   };
 

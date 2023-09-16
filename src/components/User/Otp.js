@@ -23,7 +23,7 @@ const Otp = () => {
 
       const response = await axios.post(`${APIURL}/api/otp-verification`,data)
 
-      console.log('otp verification successfull', response.data)
+     
       navigate('/')
       toast.success("Otp Verification Successfull After 10min your account has been being acivated") 
       localStorage.removeItem('member_id');
@@ -32,7 +32,7 @@ const Otp = () => {
 
 
     }catch(error){
-      // console.error("Otp registration failed")
+     
       toast.error('Invalid OTP. Please enter a valid one.');
     }
   }

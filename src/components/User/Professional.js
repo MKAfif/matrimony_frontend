@@ -11,7 +11,7 @@ const jobLocations = [
   { location: 'Chennai', state: 'Tamilnadu' },
   { location: 'Manglore', state: 'Karnataka' },
   { location: 'Thalassery', state: 'Kerala' },
-  // Add more job locations and states as needed
+
 ];
 
 export const Professional = () => {
@@ -46,18 +46,16 @@ export const Professional = () => {
         occupation: occupation,
       };
 
-      console.log(data, '4th....................');
 
       const response = await axios.post(
         `${APIURL}/api/professional-register`,
         data
       );
 
-      console.log('4th Registration successful', response.data);
       navigate('/r5');
       toast.success('80% completed');
     } catch (error) {
-      console.log('Registration failed.........');
+      toast.error('Registration failed')
     }
   };
 

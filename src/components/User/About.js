@@ -24,7 +24,7 @@ export const About = () => {
 
       const member = localStorage.getItem('member_id')
       const email  = localStorage.getItem('email')
-      console.log(email,"...................local")
+    
       const data = {
         email     : email,
         member    : member,
@@ -33,15 +33,15 @@ export const About = () => {
 
       }
 
-      console.log(data,"5th......................")
+
       const response = await axios.post(`${APIURL}/api/about-register`,data)
 
-      console.log('5th registration successfull', response.data)
+    
       navigate('/otp')
       toast.success("100% completed")
 
     }catch(error){
-      console.error("Registration failed")
+      toast.error("Registration failed")
     }
 
 

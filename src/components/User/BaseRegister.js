@@ -63,7 +63,7 @@ const BaseRegister = () => {
         email_id: emailId,
         password: password,
       };
-      console.log(data, "2nd..................");
+     
       const response = await axios.post(
         `${APIURL}/api/basic-register/create`,
         data
@@ -81,7 +81,7 @@ const BaseRegister = () => {
           "This e-mail is already registered. Please choose a different one."
         );
       }
-      console.error("Registration failed", error);
+      toast.error("Registration failed", error);
     }
   };
 

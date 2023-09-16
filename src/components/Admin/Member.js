@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { TiTick } from "react-icons/ti";
 import AdminHeader from "./AdminHeader";
+import { toast } from "react-toastify";
 
 const Member = () => {
   const [memberDetails, setMemberDetails] = useState([]);
@@ -12,14 +13,12 @@ const Member = () => {
     axios
       .get(`${APIURL}/api/adminmember`)
       .then((response) => {
-        console.log(response);
         return response.data;
       })
       .then((data) => {
-        console.log(data);
         setMemberDetails(data);
       })
-      .catch((error) => console.error("Error fetching member details", error));
+      .catch((error) => toast.error("Error fetching member details", error));
   }, []);
 
   return (

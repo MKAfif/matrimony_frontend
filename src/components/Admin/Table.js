@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const Table = () => {
   const [premiumMembers, setPremiumMembers] = useState([]);
   const APIURL = useSelector((state) => state.APIURL.url);
 
-  console.log(premiumMembers, "Data");
+ 
 
   const getMembershipType = (member) => {
     if (member.is_diamond) return "Diamond";
@@ -22,7 +23,7 @@ const Table = () => {
         setPremiumMembers(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching data");
+        toast.error("Error fetching data");
       });
   }, [APIURL]);
 

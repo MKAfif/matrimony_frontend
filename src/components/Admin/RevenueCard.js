@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 
 const RevenueCard = () => {
 
@@ -15,7 +16,7 @@ const RevenueCard = () => {
       .then((response) => {
         setRevenue(response.data.total);
       })
-      .catch((error) => console.error("Error fetching data"));
+      .catch((error) => toast.error("Error fetching data"));
   }, []);
 
 

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { TiTick } from 'react-icons/ti';
 import { SlBadge } from 'react-icons/sl';
 import AdminHeader from './AdminHeader';
+import { toast } from 'react-toastify';
 
 const PremiumMember = () => {
   const [memberDetails, setMemberDetails] = useState([]);
@@ -13,14 +14,14 @@ const PremiumMember = () => {
     axios
       .get(`${APIURL}/api/premiummembers`)
       .then((response) => {
-        console.log(response);
+       
         return response.data;
       })
       .then((data) => {
-        console.log(data);
+      
         setMemberDetails(data);
       })
-      .catch((error) => console.error('Error fetching member details', error));
+      .catch((error) => toast.error('Error fetching member details', error));
   }, []);
 
   return (

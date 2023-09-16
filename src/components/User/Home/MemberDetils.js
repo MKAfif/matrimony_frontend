@@ -35,7 +35,7 @@ const MemberDetails = () => {
   }, [memberId]);
 
   const handleInterest = async (memberId) => {
-    console.log(memberId, "....");
+  
 
     try {
       const data = {
@@ -45,7 +45,7 @@ const MemberDetails = () => {
 
       const response = await axios.post(`${APIURL}/api/showinterest`, data);
       toast.success("Intrest sent successfully");
-      console.log(response, ".....member id");
+     
     } catch (error) {
       console.error(error, "error while getting data");
     }

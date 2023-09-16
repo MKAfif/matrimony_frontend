@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 
 const TotalMemberCard = () => {
 
@@ -15,7 +16,7 @@ const TotalMemberCard = () => {
       setTotalmember(response.data.total)
 
     })
-    .catch((error)=>console.error("Error fetching in data"))
+    .catch((error)=>toast.error("Error fetching in data"))
 
   },[])
 
