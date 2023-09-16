@@ -39,7 +39,6 @@ const Billing = () => {
     })
     .then((response) => {
       if (response.data && response.data.alreadyTaken) {
-        // Member has already taken the package, display a message or take appropriate action
         toast.error('Member has already taken this membership. Choose another package.');
       } else {
         const options = {
@@ -49,7 +48,7 @@ const Billing = () => {
           name: 'Matrimony',
           description: 'Subscription Payment',
           handler: function (response) {
-            // Payment logic goes here...
+          
             const starting_date = new Date();
             const ending_date = new Date(starting_date);
             ending_date.setMonth(ending_date.getMonth() + time_period);
@@ -64,8 +63,7 @@ const Billing = () => {
               ending_date: formattedEndingDate,
             };
 
-            console.log(data, "frontend");
-
+           
             axios
               .post(`${APIURL}/api/updatepremiumprofile`, data)
               .then((response) => {

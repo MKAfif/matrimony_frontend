@@ -6,7 +6,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FaVideo } from "react-icons/fa";
+import {AiFillEye} from "react-icons/ai"
 
 const MemberDetails = () => {
   const APIURL = useSelector((state) => state.APIURL.url);
@@ -16,6 +16,11 @@ const MemberDetails = () => {
   const { memberId } = useParams();
 
   const [memberDetails, setMemberDetails] = useState(null);
+
+  const isPlatinum = memberinfo.memberinfo.is_platinum;
+  const isGold = memberinfo.memberinfo.is_gold;
+  const isDiamond = memberinfo.memberinfo.is_diamond;
+
 
   useEffect(() => {
    
@@ -46,6 +51,10 @@ const MemberDetails = () => {
     }
   };
 
+  const handleNumber = ()=>{
+    toast.error("Upgrade to premium to see the number")
+  }
+
   return (
     <div>
       <Header />
@@ -67,6 +76,20 @@ const MemberDetails = () => {
                   <div>
                     <strong>Name:</strong> {memberDetails.name}
                   </div>
+                { isDiamond || isGold || isPlatinum? (
+                  <div>
+                    <strong>Number:</strong> {memberDetails.number}
+                  </div>
+
+                ):(
+          
+                    <div className="cursor-pointer" onClick={handleNumber}>
+                      <strong>Number:</strong> 91******** 
+                    </div>
+                    
+                  
+                )
+              }
 
                   <div>
                     <strong>DOB:</strong> {memberDetails.date_of_birth}

@@ -45,13 +45,13 @@ const Member = () => {
                 key={member.id}
                 className="mb-4 p-2 md:p-4 w-full md:w-1/2 lg:w-1/3"
               >
-                <div className="bg-gradient-to-tr from-blue-200 to-indigo-600 border border-gray-300 p-4 shadow-md rounded-2xl">
-                  <p className="text-white font-semibold">ID: {member.id}</p>
-                  <p className="text-white font-semibold">Name: {member.name}</p>
-                  <p className="text-white font-semibold">
+                <div className="bg-gradient-to-b from-cyan-200 border border-gray-300 p-4 shadow-md rounded-2xl">
+                  <p className="text-black font-semibold">ID: {member.id}</p>
+                  <p className="text-black font-semibold">Name: {member.name}</p>
+                  <p className="text-black font-semibold">
                     Email: {member.email}
                   </p>
-                  <p className="text-white font-semibold">
+                  <p className="text-black font-semibold">
                     Dob: {member.date_of_birth}
                   </p>
 

@@ -76,7 +76,7 @@ const Register = () => {
         password : password
       }
       const response = await axios.post(`${APIURL}/api/memberlogin`,userdata)
-      console.log('login successfull.....',response.data)
+     
 
       const userInfo = response.data.userinfo
       dispatch(userinfo(userInfo))

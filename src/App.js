@@ -25,37 +25,60 @@ import ConversationPage from './pages/ConversationPage';
 import PremiumMembershipPage from './pages/PremiumMembershipPage';
 import VideoCallPage from './pages/VideoCallPage';
 import VideoCallInterfacePage from './pages/VideoCallInterfacePage';
+import { Navigate } from 'react-router-dom';
+
+const PrivateRoute = ({ element }) => {
+  const token = localStorage.getItem('jwtToken');
+  return token ? element : <Navigate to="/" />;
+};
+
+const AdminPrivateRoute = ({element})=>{
+  const token = localStorage.getItem('adminJwtToken');
+  return token ? element : <Navigate to="/adminlogin" />;
+}
+
 function App() {
   return (
+
     <div className="App">
       <ToastContainer />
       <BrowserRouter>
          <Routes>
+
+            {/* publicRoute */}
             <Route path="/" element={<RegisterPage1 />} />
             <Route path="/r2" element={<RegisterPage2 />} />
             <Route path="/r3" element={<RegisterPage3 />} />
             <Route path="/r4" element={<RegisterPage4 />} />
             <Route path="/r5" element={<RegisterPage5 />} />
             <Route path="/otp" element={<OtpPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/Admin" element={<AdminHomePage />} />
-            <Route path="/AdminProfile" element={<AdminProfilePage />} />
             <Route path="/Adminlogin" element={<AdminLoginPage />} />
-            <Route path="/Adminmember" element={<AdminMemberPage />} />
-            <Route path="/Upgrade" element={<UpgradePage />} />
-            <Route path="/Preference" element={<PreferencePage />} />
-            <Route path="/UserProfile" element={<UserProfilePage />} />
-            <Route path="/memberdetails/:memberId" element={<MemberDetailsPage />} />
-            <Route path="/chat" element={<ChatPage />} />
-            <Route path="/billing/:premium_id" element={<BillingPage />} />
-            <Route path="/membership" element={<MembershipPage />} />
-            <Route path="/conversation/:memberId" element={<ConversationPage />} />
-            <Route path="/premiummembers" element={<PremiumMembershipPage />} />
-            <Route path="/videocall" element={<VideoCallPage />} />
-            <Route path="/videocallinterface/:roomId" element={<VideoCallInterfacePage />} />
             <Route path="*" element={<NotFoundPage/>} />
+
+
+
+            {/* PrivateRoute */}
           
+            <Route path="/Admin" element = { <AdminPrivateRoute  element={<AdminHomePage />}/>}/>
+            <Route path="/AdminProfile" element = {<AdminPrivateRoute element={<AdminProfilePage/>} /> } />
+            <Route path="/Adminmember" element = {<AdminPrivateRoute element={<AdminMemberPage />} />} />
+            <Route path='/premiummembers' element = {<AdminPrivateRoute element={<PremiumMembershipPage/>} />} />
+            <Route path = '/membership' element = {<AdminPrivateRoute element={<MembershipPage/>} />} />
+
            
+
+            <Route path="/home" element={ <PrivateRoute element={<HomePage />}/>}/>
+            <Route path="/Upgrade" element = {<PrivateRoute element={<UpgradePage />} />} />
+            <Route path="/Preference" element = {<PrivateRoute element={<PreferencePage />} />} />
+            <Route path="/UserProfile" element = {<PrivateRoute element={<UserProfilePage />} />} />
+            <Route path="/memberdetails/:memberId" element = {<PrivateRoute element={<MemberDetailsPage />} />} />
+            <Route path="/billing/:premium_id" element = {<PrivateRoute element={<BillingPage />} />} />
+            <Route path="/conversation/:memberId" element = {<PrivateRoute element={<ConversationPage />} />} />
+            <Route path="/videocall" element = {<PrivateRoute element={<VideoCallPage />} />} />
+            <Route path="/videocallinterface/:roomId" element = {<PrivateRoute element={<VideoCallInterfacePage />} />} />
+
+            
+          
            
           </Routes>
         </BrowserRouter>

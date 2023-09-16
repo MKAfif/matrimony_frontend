@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
 import { toast } from 'react-toastify';
 import axios from 'axios'
+import { adminInfo } from '../../Redux/Actions/AdminInfoAcion';
 
 const AdminLogin = () => {
 
     const [email , setEmail]     = useState('')
     const [password,setPassword] = useState('')
 
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const APIURL = useSelector(state=>state.APIURL.url)
 
@@ -24,9 +26,12 @@ const AdminLogin = () => {
                 password : password
     
             }
-            console.log(data,".........data ")
+           
             const response = await axios.post(`${APIURL}/api/adminlogin`, data);
-            console.log('Login Successfulll.......', response.data);
+           
+
+            const tokenString = JSON.stringify(response.data.token);
+            localStorage.setItem('adminJwtToken', tokenString);
             navigate('/Admin')
             toast.success("Login Successfully")
           

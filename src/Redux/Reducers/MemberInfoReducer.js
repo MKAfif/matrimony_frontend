@@ -1,8 +1,8 @@
 import { CLEAR_MEMBER_INFO, MEMBER_INFO , IMAGE_INFO } from "../Actions/Types"
 
 const initialState = {
-    userinfo  :  null,
-    image_url :  '',
+    memberinfo  :  null,
+    image_url   :  '',
 }
 
 
@@ -14,24 +14,24 @@ const MemberInfoReducer = (state = initialState , action)=>{
                 memberinfo : action.payload
             }
 
-            case CLEAR_MEMBER_INFO:
-                return{
-                    ...state,
-                    memberinfo:null
-                }
-            
-            case IMAGE_INFO:
-                return {
-                    ...state,
-                    memberinfo : {
-                        ...state.memberinfo,
-                        image_url : action.payload
-                    }
-
+        case CLEAR_MEMBER_INFO:
+            return{
+                ...state,
+                memberinfo:null
+            }
+        
+        case IMAGE_INFO:
+            return {
+                ...state,
+                memberinfo : {
+                    ...state.memberinfo,
+                    image_url : action.payload
                 }
 
+            }
 
-            default:
+
+        default:
                 return state
     }
 }

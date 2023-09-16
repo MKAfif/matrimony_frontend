@@ -25,6 +25,7 @@ const Profile = () => {
   const isPlatinum = memberinfo.memberinfo.is_platinum;
   const isGold = memberinfo.memberinfo.is_gold;
   const isDiamond = memberinfo.memberinfo.is_diamond;
+  console.log(isDiamond ,"membership")
 
   const [selectedImage, setSelectedImage] = useState(null);
 

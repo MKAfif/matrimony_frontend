@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { Link,useLocation} from 'react-router-dom';
+import { Link,useLocation,Navigate, useNavigate} from 'react-router-dom';
 
 function AdminHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation()
 
+  const navigate = useNavigate()
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleLogout =()=>{
+    localStorage.removeItem('adminJwtToken')
+    navigate('/adminlogin')
+    
+  }
 
   return (
     <header className=" border-b border-black sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
@@ -70,7 +78,7 @@ function AdminHeader() {
         >Premium Members
         </Link>
 
-        <Link to='' className="mt-1 block px-2 py-1 font-semibold rounded hover:text-green-500 sm:mt-0 sm:ml-2">Rejected</Link>
+        {/* <Link to='' className="mt-1 block px-2 py-1 font-semibold rounded hover:text-green-500 sm:mt-0 sm:ml-2">Rejected</Link> */}
 
         <Link
           to="/membership"
@@ -84,7 +92,7 @@ function AdminHeader() {
         </Link>
 
         <div className="mt-1 block px-2 py-1 font-semibold rounded hover:text-red-800 sm:mt-0 sm:ml-2 text-red-500">
-          <Link to='/Adminlogin' className="ml-2">Logout</Link>
+          <Link onClick={handleLogout} to='/Adminlogin' className="ml-2">Logout</Link>
         </div>
       </div>
     </header>

@@ -86,7 +86,7 @@ const Membership = () => {
           {membershipPackage.map((pk) => (
             <div
               key={pk.id}
-              className='rounded-lg shadow-md p-4 mx-2 mb-4 bg-gradient-to-b from-violet-600 relative mt-4'
+              className='rounded-lg shadow-md p-4 mx-2 mb-4 bg-gradient-to-b from-cyan-200 relative mt-4'
               style={{
                 flexBasis: 'calc(50% - 1rem)', 
               }}
@@ -94,7 +94,7 @@ const Membership = () => {
               <h3 className='text-lg font-semibold mb-2 text-black'>
                 {pk.plan_name} membership
               </h3>
-              <p className='text-white mb-2 '>{pk.description}</p>
+              <p className='text-black mb-2 '>{pk.description}</p>
               <p className='text-green-500 font-semibold'>{`₹${pk.plan_price} for ${pk.time_period} Month`}</p>
               <div
                 style={{
