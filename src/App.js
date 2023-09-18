@@ -46,8 +46,8 @@ function App() {
          <Routes>
 
             {/* publicRoute */}
-            <Route path="/" element={<RegisterPage1 />} />
-            <Route path="/r2" element={<RegisterPage2 />} />
+            <Route exact path="/" element={<RegisterPage1 />} />
+            <Route exact path="/r2" element={<RegisterPage2 />} />
             <Route path="/r3" element={<RegisterPage3 />} />
             <Route path="/r4" element={<RegisterPage4 />} />
             <Route path="/r5" element={<RegisterPage5 />} />
