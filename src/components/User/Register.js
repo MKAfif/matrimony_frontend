@@ -47,7 +47,7 @@ const Register = () => {
       };
       
       console.log(APIURL,"api url.........")
-      const response = await axios.post(`${BASE_URL}/api/register`, data);
+      const response = await axios.post(`http://43.204.112.143/api/register`, data);
 
       localStorage.setItem('member_id',response.data.member_id)
 
