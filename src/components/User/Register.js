@@ -5,7 +5,6 @@ import {useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { userinfo } from '../../Redux/Actions/UserInfoAction';
 import { memberinfo } from '../../Redux/Actions/MemberInfoAction';
-import { BASE_URL } from '../../constats';
 const Register = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [profileFor , setProfilefor] = useState('')
