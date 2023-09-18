@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { userinfo } from '../../Redux/Actions/UserInfoAction';
 import { memberinfo } from '../../Redux/Actions/MemberInfoAction';
+import { BASE_URL } from '../../constats';
 const Register = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [profileFor , setProfilefor] = useState('')
@@ -46,7 +47,7 @@ const Register = () => {
       };
       
       console.log(APIURL,"api url.........")
-      const response = await axios.post(`${APIURL}/api/register`, data);
+      const response = await axios.post(`${BASE_URL}/api/register`, data);
 
       localStorage.setItem('member_id',response.data.member_id)
 
