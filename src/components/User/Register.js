@@ -60,6 +60,7 @@ const Register = () => {
       if (error.response && error.response.data && error.response.data.mobile_number){
         toast.error('This mobile number is already registered. Please choose a different one.');
       }
+      console.log(error,"errorrrrrrrrr")
       toast.error('Registration failed', error);
     }
   };
