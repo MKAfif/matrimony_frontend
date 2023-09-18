@@ -45,7 +45,7 @@ const Register = () => {
         matrimony_id : matrimonyId
       };
       
-
+      console.log(APIURL,"api url.........")
       const response = await axios.post(`${APIURL}/api/register`, data);
 
       localStorage.setItem('member_id',response.data.member_id)
