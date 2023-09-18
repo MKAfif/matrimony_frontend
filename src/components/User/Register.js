@@ -5,6 +5,8 @@ import {useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { userinfo } from '../../Redux/Actions/UserInfoAction';
 import { memberinfo } from '../../Redux/Actions/MemberInfoAction';
+import { axiosInstance } from '../../Redux/Reducers/ApiUrlReducers';
+
 const Register = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [profileFor , setProfilefor] = useState('')
@@ -13,7 +15,8 @@ const Register = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
-  const APIURL = useSelector(state=>state.APIURL.url)
+  // const APIURL = useSelector(state=>state.APIURL.url)
+  const APIURL = '/api/register';
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
@@ -46,7 +49,8 @@ const Register = () => {
       };
       
       console.log(APIURL,"api url.........")
-      const response = await axios.post(`${APIURL}/api/register`, data);
+      // const response = await axios.post(`${APIURL}/api/register`, data);
+      const response = await axiosInstance.post(APIURL, data);
 
       localStorage.setItem('member_id',response.data.member_id)
 
