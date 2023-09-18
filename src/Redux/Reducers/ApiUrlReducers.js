@@ -28,7 +28,9 @@ export default ApiUrlReducer
 const axiosInstance = axios.create({
     baseURL: "https://m4matrimony.online",
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Host': 'm4matrimony.online',
+      
     }
 });
 
