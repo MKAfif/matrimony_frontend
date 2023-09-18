@@ -1,5 +1,5 @@
 const initialstate={
-    url:"https://m4matrimony.online/"
+    url:"https://m4matrimony.online"
 }
 
 
