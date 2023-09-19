@@ -25,16 +25,16 @@ export default ApiUrlReducer
 //     return state;
 // };
 
-const axiosInstance = axios.create({
-    baseURL: "https://m4matrimony.online",
-    headers: {
-        'Content-Type': 'application/json',
-        'Host': 'm4matrimony.online',
+// const axiosInstance = axios.create({
+//     baseURL: "https://m4matrimony.online",
+//     headers: {
+//         'Content-Type': 'application/json',
+//         'Host': 'm4matrimony.online',
       
-    }
-});
+//     }
+// });
 
-export { axiosInstance };
+// export { axiosInstance };
 
 
 

@@ -15,8 +15,8 @@ const Register = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
-  // const APIURL = useSelector(state=>state.APIURL.url)
-  const APIURL = '/api/register';
+  const APIURL = useSelector(state=>state.APIURL.url)
+  // const APIURL = '/api/register';
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
@@ -49,8 +49,8 @@ const Register = () => {
       };
       
       console.log(APIURL,"api url.........")
-      // const response = await axios.post(`${APIURL}/api/register`, data);
-      const response = await axiosInstance.post(APIURL, data);
+      const response = await axios.post(`${APIURL}/api/register`, data);
+      // const response = await axiosInstance.post(APIURL, data);
 
       localStorage.setItem('member_id',response.data.member_id)
 
