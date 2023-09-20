@@ -60,7 +60,7 @@ const BaseRegister = () => {
         date_of_birth: dateOfBirth,
         religion: religion,
         mother_tongue: motherTongue,
-        email_id: emailId,
+        email: emailId,
         password: password,
       };
      
