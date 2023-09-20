@@ -98,7 +98,7 @@ const PersonalDetails = () => {
                   </div>
 
                   <div className="mt-2">
-                    <label className="font-bold border border-black">
+                    <label className="font-bold">
                       Height
                     </label>
 

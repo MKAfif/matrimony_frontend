@@ -31,6 +31,18 @@ const Profileverification = () => {
     }
   }
 
+  const handleReject = async (member_id)=>{
+    try{
+      const response = await axios.delete(`${APIURL}/api/reject-member/${member_id}`)
+      toast.success("Rejected successfully")
+
+    }catch(error){
+
+      toast.error("An error occured")
+
+    }
+  }
+
   return (
     <div>
       <AdminHeader/>
@@ -63,7 +75,9 @@ const Profileverification = () => {
                   >
                     Verify
                   </button>
-                  <button className='px-3 py-1 bg-red-500 text-white rounded-md'>
+                  <button 
+                  onClick={()=> handleReject(member.id)}
+                  className='px-3 py-1 bg-red-500 text-white rounded-md'>
                     Reject
                   </button>
                 </div>

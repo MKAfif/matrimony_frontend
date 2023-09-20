@@ -152,7 +152,7 @@ const BaseRegister = () => {
                 </div>
 
                 <div className="mt-2">
-                  <label className="border border-grey-400 font-bold  ml-1">
+                  <label className=" font-bold  ml-1">
                     Mother Tongue
                   </label>
                   <select
@@ -169,7 +169,7 @@ const BaseRegister = () => {
 
                 <div className="mt-2">
 
-                  <label className="border border-grey-400 font-bold ml-3">
+                  <label className=" font-bold ml-3">
                     E mail id
                   </label>
 
