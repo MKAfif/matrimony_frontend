@@ -30,7 +30,7 @@ const Profile = () => {
 
   const [membersData, setMembersData] = useState([]);
 
-  const [imageFile, setImageFile] = useState({member_id: null, image: null})
+  // const [imageFile, setImageFile] = useState({member_id: null, image: null})
 
   
 
@@ -50,25 +50,14 @@ const Profile = () => {
 
   const handleImageClick = (member_id) => {
     navigate(`/memberdetails/${member_id}`);
-  };
+  };  
 
   const updateData = async (imageData) => {
-    // const formData = new FormData();
-    // formData.append("image", imageData);
-    // formData.append("member", memberid);
+    const formData = new FormData();
+    formData.append("image", imageData);
+    formData.append("member", memberid);
   
 
-    setImageFile(prevState => ({
-      ...prevState,
-      member_id: memberid,
-      image:imageData
-
-    }));
-    const formData = {
-      member:imageFile.member_id,
-      image :imageFile.image
-
-    }
 
     console.log(formData,"form data")
 
@@ -107,7 +96,7 @@ const Profile = () => {
       reader.onload = () => {
         const result = reader.result;
         setSelectedImage(result);
-        updateData(result);
+        updateData(file);
       };
     }
   };
