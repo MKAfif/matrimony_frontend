@@ -65,10 +65,14 @@ const Profile = () => {
 
     }));
     const formData = {
-      "member":imageFile.member_id,
-      "image":imageFile.image
+      member:imageFile.member_id,
+      image :imageFile.image
 
     }
+
+    console.log(formData,"form data")
+
+
 
     
     for (let [key, value] of formData.entries()) {
