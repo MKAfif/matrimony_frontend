@@ -174,7 +174,7 @@ const Preference = () => {
                   <div>
                     <input
                       placeholder="min"
-                      value={ageRange.min}
+                      // value={ageRange.min}
                       onChange={(e) => handleAgeRangeChange(e)}
                       id="minAge"
                       type="number"
@@ -185,7 +185,7 @@ const Preference = () => {
                   <div>
                     <input
                       placeholder="max"
-                      value={ageRange.max}
+                      // value={ageRange.max}
                       onChange={(e) => handleAgeRangeChange(e)}
                       id="maxAge"
                       type="number"
