@@ -173,8 +173,9 @@ const Preference = () => {
                 <div className="flex space-x-2">
                   <div>
                     <input
+                    name="min"
                       placeholder="min"
-                      // value={ageRange.min}
+                      value={ageRange.min}
                       onChange={(e) => handleAgeRangeChange(e)}
                       id="minAge"
                       type="number"
@@ -184,8 +185,9 @@ const Preference = () => {
 
                   <div>
                     <input
+                    name="max"
                       placeholder="max"
-                      // value={ageRange.max}
+                      value={ageRange.max}
                       onChange={(e) => handleAgeRangeChange(e)}
                       id="maxAge"
                       type="number"
