@@ -29,6 +29,9 @@ const Profile = () => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [membersData, setMembersData] = useState([]);
+
+  const [imageFile, setImageFile] = useState({member_id: null, image: null})
+
   
 
   useEffect(() => {
@@ -50,10 +53,24 @@ const Profile = () => {
   };
 
   const updateData = async (imageData) => {
-    const formData = new FormData();
-    formData.append("image", imageData);
-    formData.append("member", memberid);
+    // const formData = new FormData();
+    // formData.append("image", imageData);
+    // formData.append("member", memberid);
+  
 
+    setImageFile(prevState => ({
+      ...prevState,
+      member_id: memberid,
+      image:imageData
+
+    }));
+    const formData = {
+      "member":imageFile.member_id,
+      "image":imageFile.image
+
+    }
+
+    
     for (let [key, value] of formData.entries()) {
       console.log(`${key}:`, value);
     }
