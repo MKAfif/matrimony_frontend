@@ -12,7 +12,11 @@ import { AiOutlineAppstoreAdd } from "react-icons/ai";
 import { BsFillChatRightDotsFill } from "react-icons/bs";
 import { FaVideo } from "react-icons/fa";
 
+
 const Profile = () => {
+
+ 
+
   const userinfo = useSelector((state) => state.userinfo);
   const memberinfo = useSelector((state) => state.memberinfo);
   const APIURL = useSelector((state) => state.APIURL.url);
@@ -53,17 +57,13 @@ const Profile = () => {
   };  
 
   const updateData = async (imageData) => {
+    debugger;
     const formData = new FormData();
     formData.append("image", imageData);
     formData.append("member", memberid);
   
-
-
     console.log(formData,"form data")
 
-
-
-    
     for (let [key, value] of formData.entries()) {
       console.log(`${key}:`, value);
     }
